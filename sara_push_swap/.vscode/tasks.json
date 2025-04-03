@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build push_swap", // Name of the task
+            "type": "shell", // Run a shell command
+            "command": "make", // Use the `make` command
+            "args": [], // No additional arguments needed
+            "options": {
+                "cwd": "${workspaceFolder}" // Run in the root of the workspace
+            },
+            "problemMatcher": [
+                "$gcc" // Use GCC problem matcher for error messages
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true // Make this the default build task
+            },
+            "detail": "Build the push_swap project using Makefile"
+        }
+    ]
+}
