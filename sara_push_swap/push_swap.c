@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
+/*   By: tkurukul <tkurukul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/04 19:00:14 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/05 21:31:52 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,22 @@ char	**split_arg(char **av)
 	return (mat);
 }
 
+int	are_num(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] >= '0' && arg[i] <= '9'))
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (-1);
+}
+
 int	two_args(t_ps **stack_a, char **argv)
 {
 	char	**matrix;
@@ -59,8 +75,7 @@ int	two_args(t_ps **stack_a, char **argv)
 	i = 0;
 	if (!argv[1][0])
 		return (-1);
-	if (((argv[1][0] == ' ') && (argv[1][1] != '+' && argv[1][1] != '-') && (argv[1][1] < '0' || argv[1][1] > '9'))
-		|| ((argv[1][0] == '+' || argv[1][0] == '-') && (argv[1][1] < '0' || argv[1][1] > '9')))
+	if (are_num(argv[1]) == -1)
 		return(-1);
 	matrix = split_arg(argv);
 	if (!matrix)
@@ -76,6 +91,7 @@ int	two_args(t_ps **stack_a, char **argv)
 	free_mat(matrix);
 	return (i);
 }
+
 
 int	more_args(t_ps **stack_a, char **argv, int argc)
 {
@@ -132,12 +148,12 @@ int	main(int argc, char *argv[])
 	{
 		i = two_args(&stack_a, argv);
 		if (i == -1)
-			return (1);
+			return (write(2, "Error\n", 6), 1);
 	}
 	else
 	{
 		if (more_args(&stack_a, argv, argc) == -1)
-			return (1);
+			return 1);
 	}
 	if (is_sorted(stack_a) == 1)
 	{
@@ -146,6 +162,6 @@ int	main(int argc, char *argv[])
 	}
 	proccess(&stack_a, &stack_b, i, argc);
 	if (last(&stack_a, &stack_b) == -1)
-		return (-1);
+		return (write(2, "Error\n", 6), 1);
 	return (0);
 }
