@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/03 21:56:14 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/04 19:00:14 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	main(int argc, char *argv[])
 	t_ps	*stack_b;
 	int		i;
 
+	i = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
@@ -139,7 +140,10 @@ int	main(int argc, char *argv[])
 			return (1);
 	}
 	if (is_sorted(stack_a) == 1)
-		return (0);
+	{
+		fft_lstclear(&stack_a);
+		return(0);
+	}
 	proccess(&stack_a, &stack_b, i, argc);
 	if (last(&stack_a, &stack_b) == -1)
 		return (-1);

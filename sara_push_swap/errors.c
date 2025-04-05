@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:33:07 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/03/28 21:38:54 by sara             ###   ########.fr       */
+/*   Updated: 2025/04/04 18:45:13 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	vali_num(int argc, char *argv[])
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9') &&((argv[i][j] != '+' && argv[i][j] != '-') || 
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9') &&((argv[i][j] != '+' && argv[i][j] != '-') ||
 				(j == 0 && (!(argv[i][j + 1] >= '0' || argv[i][j + 1] <= '9'))) ||
 				!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9')))
 				return (1);
@@ -50,7 +50,7 @@ int	checkdup(int argc, char **argv)
 		while (j < argc)
 		{
 			if (fft_atoi(argv[i]) == fft_atoi(argv[j]))
-				return (write(2, "errorr\n", 7),1);
+				return (write(2, "Error\n", 6),1);
 			j++;
 		}
 		i++;
@@ -69,7 +69,7 @@ int	vali_two(char *argv[])
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9') &&((argv[i][j] != '+' && argv[i][j] != '-') || 
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9') &&((argv[i][j] != '+' && argv[i][j] != '-') ||
 				(j == 0 && (!(argv[i][j + 1] >= '0' || argv[i][j + 1] <= '9'))) ||
 				!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9')))
 				return (1);
@@ -96,7 +96,7 @@ int	check_two(char **argv)
 		while (argv[j])
 		{
 			if (fft_atoi(argv[i]) == fft_atoi(argv[j]))
-				return (write(2, "ERDUP\n", 6), 1);
+				return (write(2, "Error\n", 6), 1);
 			j++;
 		}
 		i++;
