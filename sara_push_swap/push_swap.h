@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 20:55:31 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/11 23:46:46 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 01:26:16 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,5 @@ void	radix_sort(t_ps **stack_a, t_ps **stack_b);
 int find_max_position(t_ps *stack);
 void ft_sb(t_ps **stack_b, int i);
 void    two_sort(t_ps **stack);
-void	ft_ss(t_ps **stack_b, t_ps **stack_a);
-void	ft_rb(t_ps **stack_b, int i);
-void	ft_rr(t_ps **stack_b, t_ps **stack_a);
-void	ft_rrb(t_ps **stack_b, int i);
-void	ft_rrr(t_ps **stack_b, t_ps **stack_a);
 
 #endif

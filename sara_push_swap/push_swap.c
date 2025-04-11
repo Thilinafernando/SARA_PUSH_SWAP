@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/11 21:15:42 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 01:04:08 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	more_args(t_ps **stack_a, char **argv, int argc)
 		fft_lstadd_back(stack_a, fft_lstnew(n));
 		j++;
 	}
-	return (0);
+	return (argc - 1);
 }
 
 void	proccess(t_ps **stack_a, t_ps **stack_b, int i, int argc)
@@ -146,7 +146,8 @@ int checks_main(t_ps **s_a, char **av,int ac, int i)
 	}
 	else
 	{
-		if (more_args(s_a, av, ac) == -1)
+		i = more_args(s_a, av, ac);
+		if (i == -1)
 				return (-1);
 	}
 	return (i);
