@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkurukul <tkurukul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/05 21:31:52 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:15:42 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	two_args(t_ps **stack_a, char **argv)
 		i++;
 	}
 	if (i == 1)
-		return  (free_mat(matrix) ,fft_lstclear(stack_a), -1);
+		return  (free_mat(matrix) ,fft_lstclear(stack_a), 42);
 	free_mat(matrix);
 	return (i);
 }
@@ -133,6 +133,24 @@ int	last(t_ps **stack_a, t_ps **stack_b)
 	fft_lstclear(stack_b);
 	return (0);
 }
+int checks_main(t_ps **s_a, char **av,int ac, int i)
+{
+
+	if (ac == 2)
+	{
+		i = two_args(s_a, av);
+		if (i == -1)
+			return ( -1);
+		if (i == 42)
+			return (42);
+	}
+	else
+	{
+		if (more_args(s_a, av, ac) == -1)
+				return (-1);
+	}
+	return (i);
+}
 int	main(int argc, char *argv[])
 {
 	t_ps	*stack_a;
@@ -144,17 +162,11 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	if (argc < 2)
 		return (write(2, "Error\n", 6), 1);
-	if (argc == 2)
-	{
-		i = two_args(&stack_a, argv);
-		if (i == -1)
-			return (write(2, "Error\n", 6), 1);
-	}
-	else
-	{
-		if (more_args(&stack_a, argv, argc) == -1)
-			return 1);
-	}
+	i = checks_main(&stack_a, argv, argc, i);
+	if(i == -1)
+		return (write(2, "Error\n", 6), 1);
+	if(i == 42)
+		return (0);
 	if (is_sorted(stack_a) == 1)
 	{
 		fft_lstclear(&stack_a);

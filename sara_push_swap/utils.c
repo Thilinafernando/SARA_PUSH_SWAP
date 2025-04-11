@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:11:41 by sara              #+#    #+#             */
-/*   Updated: 2025/04/02 18:01:54 by sara             ###   ########.fr       */
+/*   Updated: 2025/04/11 21:05:05 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	fft_atoi(const char *nptr)
 void    free_mat(char **mat)
 {
    int i;
-    
+
    i = 0;
    if (!mat)
         return (free(mat));
@@ -62,12 +62,12 @@ int find_min_position(t_ps *stack)
 
     if (!stack)
         return (-1);
-        
+
     tmp = stack;
     min = tmp->num;
     min_pos = 0;
     current_pos = 0;
-    
+
     while (tmp)
     {
         if (tmp->num < min)
@@ -119,7 +119,7 @@ int	is_sorted(t_ps *stack)
 			num = 1;
 			tmp = tmp->next;
 		}
-		else 
+		else
 			return (0);
 	}
 	return (num);

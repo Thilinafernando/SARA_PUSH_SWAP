@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:33:07 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/04 18:45:13 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:52:06 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	checkdup(int argc, char **argv)
 		while (j < argc)
 		{
 			if (fft_atoi(argv[i]) == fft_atoi(argv[j]))
-				return (write(2, "Error\n", 6),1);
+				return ( 1);
 			j++;
 		}
 		i++;
@@ -96,7 +96,7 @@ int	check_two(char **argv)
 		while (argv[j])
 		{
 			if (fft_atoi(argv[i]) == fft_atoi(argv[j]))
-				return (write(2, "Error\n", 6), 1);
+				return (1);
 			j++;
 		}
 		i++;

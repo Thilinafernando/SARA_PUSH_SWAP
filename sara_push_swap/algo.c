@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:27:41 by sara              #+#    #+#             */
-/*   Updated: 2025/04/04 18:58:03 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/11 22:13:53 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,42 @@ int max_len(int max)
     return (len);
 }
 
-void    radix_sort(t_ps **stack_a, t_ps **stack_b)
+void radix_sort(t_ps **stack_a, t_ps **stack_b)
 {
-    int i;
-    int max;
-    int ith;
-    int size;
+    int i, j;
+    int size = fft_lstsize(*stack_a);
+    int max_bits = max_len(size);
 
-    ith = -1;
-	set_index(stack_a);
-    size = fft_lstsize(*stack_a);
-    max = max_len(size);
-    while (++ith < max)
+    if (is_sorted(*stack_a))
+        return;
+
+    set_index(stack_a);
+
+    for (i = 0; i < max_bits; i++)
     {
-        i = -1;
-        while(++i < size)
+        int pushes = 0;
+        int rotations = 0;
+
+        for (j = 0; j < size; j++)
         {
-            if(is_sorted((*stack_a)) == 1 && fft_lstsize(*stack_b) == 0)
-                return ;
-            if ((((*stack_a)->index >> ith) & 1) == 1)
+            if ((((*stack_a)->index >> i) & 1) == 1)
+            {
                 ft_ra(stack_a, 1);
+                rotations++;
+            }
             else
+            {
                 ft_pb(stack_b, stack_a);
+                pushes++;
+            }
         }
-        while(fft_lstsize(*stack_b) != 0)
+
+        // Bring back all elements
+        while (pushes--)
             ft_pa(stack_a, stack_b);
     }
 }
+
 
 void    two_sort(t_ps **stack)
 {
