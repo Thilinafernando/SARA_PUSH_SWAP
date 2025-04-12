@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:11:25 by sara              #+#    #+#             */
-/*   Updated: 2025/03/17 12:59:35 by sara             ###   ########.fr       */
+/*   Updated: 2025/04/12 02:40:10 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int fft_lstsize(t_ps *head)
+int	fft_lstsize(t_ps *head)
 {
-    int i;
-    t_ps *tmp;
+	int		i;
+	t_ps	*tmp;
 
-    tmp = head;
-    i = 0;
-    while (tmp)
-    {
-        tmp = tmp->next;
-        i++;
-    }
-    return (i);
+	tmp = head;
+	i = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
 }
 
 t_ps	*fft_lstnew(int num)

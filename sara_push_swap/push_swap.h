@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 20:55:31 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/12 01:26:16 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 02:28:02 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		vali_two(char *argv[]);
 int		check_two(char **argv);
 void	set_index(t_ps **stack);
 t_ps	*fft_lstlast(t_ps *lst);
-int 	fft_lstsize(t_ps *head);
+int		fft_lstsize(t_ps *head);
 void	fft_lstclear(t_ps **lst);
 long	fft_atoi(const char *nptr);
 void	ft_ra(t_ps **stack_a, int i);
@@ -49,8 +49,8 @@ void	ft_pb(t_ps **stack_b, t_ps **stack_a);
 void	fft_lstadd_back(t_ps **lst, t_ps *new);
 void	five_algo(t_ps **stack_a, t_ps **stack_b);
 void	radix_sort(t_ps **stack_a, t_ps **stack_b);
-int find_max_position(t_ps *stack);
-void ft_sb(t_ps **stack_b, int i);
-void    two_sort(t_ps **stack);
+int		find_max_position(t_ps *stack);
+void	ft_sb(t_ps **stack_b, int i);
+void	two_sort(t_ps **stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/12 01:04:08 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 02:45:09 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	print_lst(t_ps *swap)
+/* void	print_lst(t_ps *swap)
 {
 	t_ps	*tmp;
 
@@ -31,7 +31,7 @@ void	print_lst(t_ps *swap)
 		printf("%d--", tmp -> num);
 		tmp = tmp -> next;
 	}
-}
+} */
 
 char	**split_arg(char **av)
 {
@@ -42,11 +42,10 @@ char	**split_arg(char **av)
 	mat = ft_split(av[1], 32);
 	if(mat == NULL)
 		return(NULL);
-
 	while(mat[i])
 		i++;
 	if(check_two(mat) == 1)
-		return (free_mat(mat),mat = NULL, NULL);
+		return (free_mat(mat), mat = NULL, NULL);
 	return (mat);
 }
 
@@ -58,9 +57,7 @@ int	are_num(char *arg)
 	while (arg[i])
 	{
 		if ((arg[i] >= '0' && arg[i] <= '9'))
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (-1);
@@ -69,8 +66,8 @@ int	are_num(char *arg)
 int	two_args(t_ps **stack_a, char **argv)
 {
 	char	**matrix;
-	int	i;
-	int	n;
+	int		i;
+	int		n;
 
 	i = 0;
 	if (!argv[1][0])
@@ -91,7 +88,6 @@ int	two_args(t_ps **stack_a, char **argv)
 	free_mat(matrix);
 	return (i);
 }
-
 
 int	more_args(t_ps **stack_a, char **argv, int argc)
 {
@@ -133,9 +129,9 @@ int	last(t_ps **stack_a, t_ps **stack_b)
 	fft_lstclear(stack_b);
 	return (0);
 }
-int checks_main(t_ps **s_a, char **av,int ac, int i)
-{
 
+int	checks_main(t_ps **s_a, char **av,int ac, int i)
+{
 	if (ac == 2)
 	{
 		i = two_args(s_a, av);
@@ -148,10 +144,11 @@ int checks_main(t_ps **s_a, char **av,int ac, int i)
 	{
 		i = more_args(s_a, av, ac);
 		if (i == -1)
-				return (-1);
+			return (-1);
 	}
 	return (i);
 }
+
 int	main(int argc, char *argv[])
 {
 	t_ps	*stack_a;

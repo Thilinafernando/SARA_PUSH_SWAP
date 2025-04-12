@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:11:41 by sara              #+#    #+#             */
-/*   Updated: 2025/04/11 21:05:05 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 02:30:14 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,77 +38,75 @@ long	fft_atoi(const char *nptr)
 	return (res * sign);
 }
 
-void    free_mat(char **mat)
+void	free_mat(char **mat)
 {
-   int i;
+	int i;
 
-   i = 0;
-   if (!mat)
-        return (free(mat));
-    while (mat[i] != NULL)
-    {
-        free(mat[i]);
-        i++;
-    }
-   free(mat);
+	i = 0;
+	if (!mat)
+		return (free(mat));
+	while (mat[i] != NULL)
+	{
+		free(mat[i]);
+		i++;
+	}
+	free(mat);
 }
 
-int find_min_position(t_ps *stack)
+int	find_min_position(t_ps *stack)
 {
-    t_ps *tmp;
-    int min;
-    int min_pos;
-    int current_pos;
+	t_ps	*tmp;
+	int		min;
+	int		min_pos;
+	int		current_pos;
 
-    if (!stack)
-        return (-1);
-
-    tmp = stack;
-    min = tmp->num;
-    min_pos = 0;
-    current_pos = 0;
-
-    while (tmp)
-    {
-        if (tmp->num < min)
-        {
-            min = tmp->num;
-            min_pos = current_pos;
-        }
-        tmp = tmp->next;
-        current_pos++;
-    }
-    return (min_pos);
+	if (!stack)
+		return (-1);
+	tmp = stack;
+	min = tmp->num;
+	min_pos = 0;
+	current_pos = 0;
+	while (tmp)
+	{
+		if (tmp->num < min)
+		{
+			min = tmp->num;
+			min_pos = current_pos;
+		}
+		tmp = tmp->next;
+		current_pos++;
+	}
+	return (min_pos);
 }
 
-int find_max_position(t_ps *stack)
+int	find_max_position(t_ps *stack)
 {
-    t_ps *tmp;
-    int max;
-	int	max_pos;
-    int current_pos;
+	t_ps	*tmp;
+	int		max;
+	int		max_pos;
+	int		current_pos;
 
-    tmp = stack;
-    max = tmp->num;
+	tmp = stack;
+	max = tmp->num;
 	max_pos = 0;
-    current_pos = 0;
-    while (tmp)
-    {
-        if (tmp->num > max)
+	current_pos = 0;
+	while (tmp)
+	{
+		if (tmp->num > max)
 		{
 			max = current_pos;
-        	max = tmp->num;
+			max = tmp->num;
 		}
-        tmp = tmp->next;
-        current_pos++;
-    }
-    return (max_pos);
+		tmp = tmp->next;
+		current_pos++;
+	}
+	return (max_pos);
 }
 
 int	is_sorted(t_ps *stack)
 {
-	int num;
-	t_ps *tmp;
+	int		num;
+	t_ps	*tmp;
 
 	tmp = stack;
 	num = 0;
