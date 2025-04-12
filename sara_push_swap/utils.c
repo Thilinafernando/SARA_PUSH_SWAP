@@ -6,11 +6,54 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:11:41 by sara              #+#    #+#             */
-/*   Updated: 2025/04/12 02:30:14 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 14:56:54 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	two_args(t_ps **stack_a, char **argv)
+{
+	char	**matrix;
+	int		i;
+	int		n;
+
+	i = 0;
+	if (!argv[1][0])
+		return (-1);
+	if (are_num(argv[1]) == -1)
+		return(-1);
+	matrix = split_arg(argv);
+	if (!matrix)
+		return (-1);
+	while(matrix[i])
+	{
+		n = fft_atoi(matrix[i]);
+		fft_lstadd_back(stack_a, fft_lstnew(n));
+		i++;
+	}
+	if (i == 1)
+		return (free_mat(matrix) ,fft_lstclear(stack_a), 42);
+	free_mat(matrix);
+	return (i);
+}
+
+int	more_args(t_ps **stack_a, char **argv, int argc)
+{
+	int	j;
+	int	n;
+
+	j = 1;
+	if (checkdup(argc, argv) != 0)
+		return (-1);
+	while (j < argc)
+	{
+		n = fft_atoi(argv[j]);
+		fft_lstadd_back(stack_a, fft_lstnew(n));
+		j++;
+	}
+	return (argc - 1);
+}
 
 long	fft_atoi(const char *nptr)
 {
@@ -51,56 +94,6 @@ void	free_mat(char **mat)
 		i++;
 	}
 	free(mat);
-}
-
-int	find_min_position(t_ps *stack)
-{
-	t_ps	*tmp;
-	int		min;
-	int		min_pos;
-	int		current_pos;
-
-	if (!stack)
-		return (-1);
-	tmp = stack;
-	min = tmp->num;
-	min_pos = 0;
-	current_pos = 0;
-	while (tmp)
-	{
-		if (tmp->num < min)
-		{
-			min = tmp->num;
-			min_pos = current_pos;
-		}
-		tmp = tmp->next;
-		current_pos++;
-	}
-	return (min_pos);
-}
-
-int	find_max_position(t_ps *stack)
-{
-	t_ps	*tmp;
-	int		max;
-	int		max_pos;
-	int		current_pos;
-
-	tmp = stack;
-	max = tmp->num;
-	max_pos = 0;
-	current_pos = 0;
-	while (tmp)
-	{
-		if (tmp->num > max)
-		{
-			max = current_pos;
-			max = tmp->num;
-		}
-		tmp = tmp->next;
-		current_pos++;
-	}
-	return (max_pos);
 }
 
 int	is_sorted(t_ps *stack)

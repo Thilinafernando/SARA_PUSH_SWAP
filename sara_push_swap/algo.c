@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:27:41 by sara              #+#    #+#             */
-/*   Updated: 2025/04/12 02:40:43 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 14:45:56 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,6 @@ void	set_index(t_ps **stack_a)
 	}
 }
 
-int	max_len(int max)
-{
-	int	len;
-
-	len = 0;
-	while(max)
-	{
-		max >>= 1;
-		len++;
-	}
-	return (len);
-}
-
 void	radix_sort(t_ps **stack_a, t_ps **stack_b)
 {
 	int	i;
@@ -70,37 +57,37 @@ void	radix_sort(t_ps **stack_a, t_ps **stack_b)
 		while (++i < size)
 		{
 			if (is_sorted((*stack_a)) == 1 && fft_lstsize(*stack_b) == 0)
-				return ;
+			return ;
 			if ((((*stack_a)->index >> ith) & 1) == 1)
-				ft_ra(stack_a, 1);
+			ft_ra(stack_a, 1);
 			else
-				ft_pb(stack_b, stack_a);
+			ft_pb(stack_b, stack_a);
 		}
 		while (fft_lstsize(*stack_b) != 0)
-			ft_pa(stack_a, stack_b);
+		ft_pa(stack_a, stack_b);
 	}
 }
 
 void	two_sort(t_ps **stack)
 {
 	if ((*stack)->num > (*stack)->next->num)
-		ft_sa(stack, 1);
+	ft_sa(stack, 1);
 }
 
 void	three_args(t_ps **stack)
 {
 	if ((*stack)->num > (*stack)->next->num
-		&& (*stack)->next->num > (*stack)->next->next->num)
+	&& (*stack)->next->num > (*stack)->next->next->num)
 	{
 		ft_sa(stack, 1);
 		ft_rra(stack, 1);
 	}
 	else if ((*stack)->next->num > (*stack)->num
 	&& (*stack)->num > (*stack)->next->next->num)
-		ft_rra(stack, 1);
+	ft_rra(stack, 1);
 	else if ((*stack)->num > (*stack)->next->next->num
 	&& (*stack)->next->next->num > (*stack)->next->num)
-		ft_ra(stack, 1);
+	ft_ra(stack, 1);
 	else if ((*stack)->next->num > (*stack)->next->next->num
 	&& (*stack)->next->next->num > (*stack)->num)
 	{
@@ -109,7 +96,7 @@ void	three_args(t_ps **stack)
 	}
 	else if ((*stack)->next->next->num > (*stack)->num
 	&& (*stack)->num > (*stack)->next->num)
-		ft_sa(stack, 1);
+	ft_sa(stack, 1);
 }
 
 void	five_algo(t_ps **stack_a, t_ps **stack_b)
@@ -122,20 +109,20 @@ void	five_algo(t_ps **stack_a, t_ps **stack_b)
 	{
 		min_pos = find_min_position(*stack_a);
 		if (min_pos == 0)
-	{
-		ft_pb(stack_b, stack_a);
+		{
+			ft_pb(stack_b, stack_a);
 			len--;
 		}
 		else if (min_pos <= len / 2)
-			ft_ra(stack_a, 1);
+		ft_ra(stack_a, 1);
 		else
-			ft_rra(stack_a, 1);
+		ft_rra(stack_a, 1);
 	}
 	three_args(stack_a);
 	while (*stack_b)
 	{
 		ft_pa(stack_a, stack_b);
 		if ((*stack_a)->next && (*stack_a)->num > (*stack_a)->next->num)
-			ft_sa(stack_a, 1);
+		ft_sa(stack_a, 1);
 	}
 }

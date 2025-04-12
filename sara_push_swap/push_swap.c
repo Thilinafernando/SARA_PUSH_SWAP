@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 19:18:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/12 02:45:09 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 14:55:01 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "push_swap.h"
-
-/* void	print_lst(t_ps *swap)
-{
-	t_ps	*tmp;
-
-	tmp = swap;
-	while (tmp)
-	{
-		if (tmp->next == NULL)
-		{
-			printf("%d\n", tmp -> num);
-			break ;
-		}
-		printf("%d--", tmp -> num);
-		tmp = tmp -> next;
-	}
-} */
 
 char	**split_arg(char **av)
 {
@@ -47,63 +30,6 @@ char	**split_arg(char **av)
 	if(check_two(mat) == 1)
 		return (free_mat(mat), mat = NULL, NULL);
 	return (mat);
-}
-
-int	are_num(char *arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		if ((arg[i] >= '0' && arg[i] <= '9'))
-			return (1);
-		i++;
-	}
-	return (-1);
-}
-
-int	two_args(t_ps **stack_a, char **argv)
-{
-	char	**matrix;
-	int		i;
-	int		n;
-
-	i = 0;
-	if (!argv[1][0])
-		return (-1);
-	if (are_num(argv[1]) == -1)
-		return(-1);
-	matrix = split_arg(argv);
-	if (!matrix)
-		return (-1);
-	while(matrix[i])
-	{
-		n = fft_atoi(matrix[i]);
-		fft_lstadd_back(stack_a, fft_lstnew(n));
-		i++;
-	}
-	if (i == 1)
-		return  (free_mat(matrix) ,fft_lstclear(stack_a), 42);
-	free_mat(matrix);
-	return (i);
-}
-
-int	more_args(t_ps **stack_a, char **argv, int argc)
-{
-	int	j;
-	int	n;
-
-	j = 1;
-	if (checkdup(argc, argv) != 0)
-		return (-1);
-	while (j < argc)
-	{
-		n = fft_atoi(argv[j]);
-		fft_lstadd_back(stack_a, fft_lstnew(n));
-		j++;
-	}
-	return (argc - 1);
 }
 
 void	proccess(t_ps **stack_a, t_ps **stack_b, int i, int argc)
@@ -161,9 +87,9 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (write(2, "Error\n", 6), 1);
 	i = checks_main(&stack_a, argv, argc, i);
-	if(i == -1)
+	if (i == -1)
 		return (write(2, "Error\n", 6), 1);
-	if(i == 42)
+	if (i == 42)
 		return (0);
 	if (is_sorted(stack_a) == 1)
 	{
@@ -175,3 +101,20 @@ int	main(int argc, char *argv[])
 		return (write(2, "Error\n", 6), 1);
 	return (0);
 }
+
+/* void	print_lst(t_ps *swap)
+{
+	t_ps	*tmp;
+
+	tmp = swap;
+	while (tmp)
+	{
+		if (tmp->next == NULL)
+		{
+			printf("%d\n", tmp -> num);
+			break ;
+		}
+		printf("%d--", tmp -> num);
+		tmp = tmp -> next;
+	}
+} */

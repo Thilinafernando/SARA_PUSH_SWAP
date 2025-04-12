@@ -7,11 +7,13 @@ LIBFTDIR =libft/
 LIBFT = $(LIBFTDIR)libft.a
 
 SRC = push_swap.c \
-		operations.c \
-		ft_list.c \
-		errors.c \
 		algo.c \
 		utils.c \
+		errors.c \
+		op_two.c \
+		op_one.c \
+		ft_list.c \
+		op_three.c \
 
 OBJ = $(SRC:.c=.o)
 

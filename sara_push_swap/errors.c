@@ -6,7 +6,7 @@
 /*   By: tkurukul <thilinaetoro4575@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 14:33:07 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/04/12 02:34:18 by tkurukul         ###   ########.fr       */
+/*   Updated: 2025/04/12 14:45:21 by tkurukul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,18 @@ int	check_two(char **argv)
 		i++;
 	}
 	return (0);
+}
+
+int	are_num(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] >= '0' && arg[i] <= '9'))
+			return (1);
+		i++;
+	}
+	return (-1);
 }
